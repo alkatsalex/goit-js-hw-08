@@ -8,7 +8,7 @@ const feedBack = {
 }
 onReboot()
 
-form.addEventListener('input', onInput)
+form.addEventListener('input', throttle(onInput, 500))
 form.addEventListener('submit', onSubmit)
 
 function onInput() {
@@ -31,6 +31,7 @@ function onReboot() {
 
 function onSubmit(e) {
     e.preventDefault()
+    console.log(feedBack);
     e.currentTarget.reset()
     localStorage.removeItem(FB_KEY)
 }
